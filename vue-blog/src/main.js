@@ -28,6 +28,16 @@ Vue.directive('theme', {
   }
 });
 
+//Filters change the output in the DOM but not the data that is displayed
+Vue.filter('to-uppercase', function(value) {
+  return value.toUpperCase();
+});
+Vue.filter('snippet', function(value){
+  return value.slice(0,100)+ '...';
+})
+
+
+
 new Vue({
   el: '#app',
   render: h => h(App)
