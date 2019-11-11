@@ -35,6 +35,20 @@
                     return blog.title.match(this.search);
                 })
             }
+        },
+        // filters locally registered. To be used only in this component
+        filters: {
+            'to-uppercase': function(value) {
+                return value.toUpperCase();
+            }
+        },
+        // directives locally registered. To be used only in this component
+        directives: {
+            'rainbow': {
+                bind(el,binding,vnode) {
+                    el.style.color='#'+Math.random().toString().slice(2,8)
+                }
+            }
         }
     };
 </script>
