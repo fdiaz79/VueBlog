@@ -60,11 +60,7 @@
         methods: {
             post: function() {
                 //$http.post may be used because of the vue-resource package. In the ('') va la base de datos a donde se quiere hacer el request
-                this.$http.post('http://jsonplaceholder.typicode.com/posts', {
-                    title: this.blog.title,
-                    body: this.blog.content,
-                    userId: 1
-                }).then(function(data ){
+                this.$http.post('https://vueblog-df35c.firebaseio.com/posts.json', this.blog).then(function(data ){
                     console.log(data);
                     this.submitted= true;
                 });
