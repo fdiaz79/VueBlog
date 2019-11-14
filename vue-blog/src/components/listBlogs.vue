@@ -24,10 +24,16 @@
         
         },
         created() {
-            this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data) {
-                console.log(data);
-                this.blogs = data.body;
-            })
+            this.$http.get('https://vueblog-df35c.firebaseio.com/posts.json').then(function(data) {
+                return data.json();
+            }).then(function(data) {
+                var blogsArray = [];
+                for (let key in data){
+                    data[key].id = key;
+                    blogsArray.push(data[key]);
+                }
+                this.blogs = blogsArray;
+            });
         },
         computed: {
             
