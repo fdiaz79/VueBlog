@@ -3,7 +3,9 @@
         <h1> List Blog Titles</h1>
         <input type="text" v-model="search" placeholder="search box" />
         <div v-for="blog in filteredBlogs" class="single-blog">
-            <h2 v-rainbow>{{blog.title | to-uppercase}} </h2>
+            <router-link v-bind:to="'/blog/' + blog.id">
+                <h2 v-rainbow>{{blog.title | to-uppercase}} </h2>
+            </router-link>
         </div>    
     </div>
 </template>
@@ -24,7 +26,7 @@
         created() {
             this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data) {
                 console.log(data);
-                this.blogs = data.body.slice(0,10);
+                this.blogs = data.body;
             })
         },
         computed: {
